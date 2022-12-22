@@ -220,47 +220,113 @@
       <!-- navbar -->
     </header>
     <h1>습득탭</h1>
-    <table class="table">
-      <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Title</th>
-        <th scope="col">Content</th>
-      </tr>
-      </thead>
-      <tbody>
-
-      <tr>
-        <th scope="row">{{id}}</th>
-        <td><a href="/articles/{{id}}">{{title}}</a></td>
-        <td>{{content}}</td>
-      </tr>
-
-      </tbody>
-    </table>
+    <div style="display: flex; margin: 0 10px 0 10px;">
+      <div class="card" style="width: 10rem; margin-left: 10px" th:each="lost:${lostList}">
+        <img th:src="@{${lost.filepath}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <label>제목: </label>
+          <h5 class="card-title col-2 text-truncate" th:text="${lost.title}"></h5>
+          <label>내용: </label>
+          <p class="card-text col-2 text-truncate " th:text="${lost.content}" ></p>
+          <label>아이디: </label>
+          <span class="card-text col-2 text-truncate" th:text="${lost.id}" ></span>
+          <a style="size: 20px" th:href="@{/lost/{id}(id=${lost.id})}" class="btn btn-primary">자세히</a>
+        </div>
+      </div>
+    </div>
 
 
     <h1>분실탭</h1>
-    <table class="table">
-      <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Title</th>
-        <th scope="col">Content</th>
-      </tr>
-      </thead>
-      <tbody>
+  <div style="display: flex; margin: 0 10px 0 10px;">
+  <div class="card" style="width: 10rem; margin-left: 10px" th:each="lost:${lostList}">
+    <img th:src="@{${lost.filepath}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <label>제목: </label>
+      <h5 class="card-title col-2 text-truncate" th:text="${lost.title}"></h5>
+      <label>내용: </label>
+      <p class="card-text col-2 text-truncate " th:text="${lost.content}" ></p>
+      <label>아이디: </label>
+      <span class="card-text col-2 text-truncate" th:text="${lost.id}" ></span>
+      <a style="size: 20px" th:href="@{/lost/{id}(id=${lost.id})}" class="btn btn-primary">자세히</a>
+    </div>
+  </div>
+</div>
 
-      <tr th:each="lost:${lostList}">
-        <th scope="row" th:text="${lost.id}">{{id}}</th>
-        <td ><a th:text="${lost.title}" th:href="@{/lost/{id}(id=${lost.id})}">{{title}}</a></td>
-        <td th:text="${lost.content}">{{content}}</td>
-      </tr>
+
+<!--    <table class="table">-->
+<!--      <thead>-->
+<!--      <tr>-->
+<!--        <th scope="col">ID</th>-->
+<!--        <th scope="col">Title</th>-->
+<!--        <th scope="col">Content</th>-->
+<!--      </tr>-->
+<!--      </thead>-->
+<!--      <tbody>-->
+
+<!--      <tr th:each="lost:${lostList}">-->
+<!--        <th scope="row" th:text="${lost.id}">{{id}}</th>-->
+<!--        <td ><a th:text="${lost.title}" th:href="@{/lost/{id}(id=${lost.id})}">{{title}}</a></td>-->
+<!--        <td th:text="${lost.content}">{{content}}</td>-->
+<!--      </tr>-->
 
       </tbody>
     </table>
 
-    <a th:href="@{/lost/new}">글쓰기</a>
+    <a style="margin: 20px" type="button" class="btn btn-info" th:href="@{/lost/new}">글쓰기</a>
 
+    <footer class="bg-primary text-white text-center text-lg-start">
+      <!-- Grid container -->
+      <div class="container p-4">
+        <!--Grid row-->
+        <div class="row">
+          <!--Grid column-->
+          <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase">웹서비스 프로그래밍 응용</h5>
+
+            <p>
+              TUFOUND-한국공학대학교 학생 분실물 찾기 서비스
+            </p>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 style="display: none" class="text-uppercase">Links</h5>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!" class="text-white">은종혁</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">조욱희</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">박찬민</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">박보현</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">김상운</a>
+            </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </div>
+      <!-- Grid container -->
+
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2020 Copyright:
+        <a class="text-white" href="https://mdbootstrap.com/">웹서비스프로그래밍8팀</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
   </body>
 </html>
